@@ -7,12 +7,17 @@ const team = {
 }
 
 function reducer(state = team, action){
+    console.log(action.payload)
     switch (action.type){
         case ADD_HERO:{
             return {
-                ...state,
-                
+                ...state
             }
+        }
+        default: {
+            return state;
         }
     }
 }
+
+export default reducer;

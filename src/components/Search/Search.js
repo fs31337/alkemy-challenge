@@ -2,11 +2,16 @@ import React,{useState} from 'react';
 import getHeroByName from '../../services/getHeroByName';
 
 function Search() {
-    const [input, setInput] = useState("");
+    let initialState = "";
+    const [input, setInput] = useState( initialState );
 
     function handleSubmit(e){
+        if(input.length >=2){
+            e.preventDefault();
+            getHeroByName(input);
+            setInput(initialState);
+        }
         e.preventDefault();
-        getHeroByName(input)
     }
 
     function handleInputChange({target}){
