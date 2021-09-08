@@ -3,7 +3,6 @@ import axios from 'axios';
 
 export function getToken(values) {
     var bodyFormData = new FormData();
-    console.log(values)
     bodyFormData.append('email', `${values.email}`);
     bodyFormData.append('password', `${values.password}`);
     axios({
@@ -12,15 +11,13 @@ export function getToken(values) {
         data: bodyFormData,
         headers: { "Content-Type": "multipart/form-data" },
       })
-        .then(function (response) {
-          //handle success
-            localStorage.setItem('token', JSON.stringify(response.data.token))
-            return 200;
-        })
-        .catch(function (response) {
-          //handle error
-          console.log(response);
-        });
-}
+        .then(response => {
+          localStorage.setItem('token', JSON.stringify(response.data.token))
+        }
+          ).catch(error => {
+            return error;
+          });
+        }
+
 
 export default getToken;

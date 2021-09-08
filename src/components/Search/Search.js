@@ -1,34 +1,29 @@
 import React,{useState} from 'react';
+import axios from 'axios';
 import getHeroByName from '../../services/getHeroByName';
 
-function Search() {
+function Search({setHeros}) {
+
     let initialState = "";
-    const [input, setInput] = useState( initialState );
+    const [input, setInput] = useState();
 
     function handleSubmit(e){
         if(input.length >=2){
             e.preventDefault();
-            getHeroByName(input);
+            getHeroByName(input,setHeros)
             setInput(initialState);
         }
         e.preventDefault();
     }
 
     function handleInputChange({target}){
-        setInput ({
-            ...input,
-            [target.name]: target.value
-        })
+        setInput ( target.value)
     }
 
     return (
-        //validar con formik
-        <div>
-            Formulario
-                Nombre del heroe
-                Imagen
-                Acciones para agregarlo al equipo
-        </div>
+        <form onSubmit={(e) =>handleSubmit(e)}>
+            <input type="text" value={input} onChange={(e) => handleInputChange(e)} />
+        </form>
     )
 }
 

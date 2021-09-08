@@ -1,11 +1,10 @@
-import React from 'react'
+import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import checkToken from '../../services/checkToken';
 import getToken from '../../services/getToken';
-import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router';
 
 function Login() {
-
-    const history = useHistory();
 
     return (
         <div>
@@ -24,13 +23,10 @@ function Login() {
                     return errors;
                 }}
                 onSubmit={(values, { setSubmitting }) => {
+                    console.log(getToken(values))
                     setTimeout(() => {
-                    // alert(JSON.stringify(values, null, 2));
-                    if (getToken(values) === 200){
-                        history.push(`/`)
-                    }
                     setSubmitting(false);
-                    }, 400);
+                    }, 500);
                 }}
                 >
                 {({ isSubmitting }) => (
