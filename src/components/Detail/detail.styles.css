@@ -1,0 +1,19 @@
+.cardDetail {
+    margin: 0 auto;
+    width:30rem;
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    color:black;
+}
+
+.detailText{
+    text-align: center;
+    color:black;
+}
+
+.titleDetail{
+    color:black;
+    font-size:2rem;
+    margin-bottom: 10px;
+}

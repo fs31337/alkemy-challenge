@@ -19,7 +19,7 @@ function App() {
       <Route exact path="/">
         {!loggedIn ? <Redirect to="/login" /> : <Search/>}
       </Route>
-      <Route exact path="/">
+      <Route exact path="/detail/:id">
         {!loggedIn ? <Redirect to="/login" /> : <Detail/>}
       </Route>
       <Route exact path="/login">

@@ -1,6 +1,9 @@
 import React,{useState} from 'react';
-import axios from 'axios';
 import getHeroByName from '../../services/getHeroByName';
+import {Button} from 'react-bootstrap';
+import '../Home/Home.styles.css';
+
+
 
 function Search({setHeros}) {
 
@@ -15,14 +18,18 @@ function Search({setHeros}) {
         }
         e.preventDefault();
     }
+    function reset(){
+        setHeros([])
+    }
 
     function handleInputChange({target}){
         setInput ( target.value)
     }
 
     return (
-        <form onSubmit={(e) =>handleSubmit(e)}>
-            <input type="text" value={input} onChange={(e) => handleInputChange(e)} />
+        <form onSubmit={(e) =>handleSubmit(e)} className="searchHero">
+            <input type="text" placeholder="Search a Hero!" value={input} onChange={(e) => handleInputChange(e)} />
+            <Button onClick={() => reset()}>Clear</Button>
         </form>
     )
 }

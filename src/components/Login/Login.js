@@ -5,7 +5,7 @@ import getToken from '../../services/getToken';
 import { useHistory } from 'react-router';
 
 function Login() {
-
+    const redirect = useHistory();
     return (
         <div>
         <h1>Login</h1>
@@ -23,7 +23,7 @@ function Login() {
                     return errors;
                 }}
                 onSubmit={(values, { setSubmitting }) => {
-                    console.log(getToken(values))
+                    getToken(values,redirect)
                     setTimeout(() => {
                     setSubmitting(false);
                     }, 500);

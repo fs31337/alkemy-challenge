@@ -1,7 +1,7 @@
 import axios from 'axios';
 //agregar token api a .env
 
-export function getToken(values) {
+export function getToken(values,redirect) {
     var bodyFormData = new FormData();
     bodyFormData.append('email', `${values.email}`);
     bodyFormData.append('password', `${values.password}`);
